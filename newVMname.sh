@@ -1,8 +1,10 @@
 #!/bin/bash
+#Este es el script que verifica si la máquina virtual ya existe.
+#En caso de que exista, seguira preguntando.
 while [ 1 ]; do
-dialog --inputbox "Nombre de la maquina" 8 40 2>nombre
-varnombre=$(cat nombre)
-VBoxManage list vms | grep ${varnombre}
+dialog --inputbox "Digite el nombre de la maquina" 8 40 2>salida
+VNAME=$(cat salida)
+VBoxManage list vms | grep -i ${VNAME}
 if [ $? -eq 1 ]; then
 break
 fi
